@@ -274,17 +274,17 @@ def generate_wad(wad_file: str, rom_file: str, output_file: str, channel_title: 
     wad_app1_sha1 = list(wad_buffer[0xF18:0xF2C])
     wad_app5_sha1 = list(wad_buffer[0xFA8:0xFBC])
 
-    isUsaApp1 = wad_app1_sha1 in wad_app1_sha1_usa
-    isUsaApp5 = wad_app5_sha1 in wad_app5_sha1_usa
-    isJpnApp1 = wad_app1_sha1 in wad_app1_sha1_jpn
-    isJpnApp5 = wad_app5_sha1 in wad_app5_sha1_jpn
+    is_usa_app1 = wad_app1_sha1 in wad_app1_sha1_usa
+    is_usa_app5 = wad_app5_sha1 in wad_app5_sha1_usa
+    is_jpn_app1 = wad_app1_sha1 in wad_app1_sha1_jpn
+    is_jpn_app5 = wad_app5_sha1 in wad_app5_sha1_jpn
 
-    isUsaWad = isUsaApp1 and isUsaApp5
-    isJpnWad = isJpnApp1 and isJpnApp5
+    is_usa_wad = is_usa_app1 and is_usa_app5
+    is_jpn_wad = is_jpn_app1 and is_jpn_app5
 
-    if isUsaWad:
+    if is_usa_wad:
         wad_patch_name = "ootr_usa.gzi"
-    elif isJpnWad:
+    elif is_jpn_wad:
         wad_patch_name = "ootr_jpn.gzi"
     else:
         raise RuntimeError('Base WAD file is not a valid OoT USA or JPN wad.')
