@@ -274,18 +274,20 @@ def generate_wad(wad_file: str, rom_file: str, output_file: str, channel_title: 
     wad_app1_sha1 = list(wad_buffer[0xF18:0xF2C])
     wad_app5_sha1 = list(wad_buffer[0xFA8:0xFBC])
 
-    if wad_app1_sha1 in wad_app1_sha1_usa:
-        if wad_app5_sha1 in wad_app5_sha1_usa:
-            wad_patch_name = "ootr_usa.gzi"
-        else:
-            raise Exception('Base WAD file is not a valid OoT USA or JPN wad.')
-    elif wad_app1_sha1 in wad_app1_sha1_jpn:
-        if wad_app5_sha1 in wad_app5_sha1_jpn:
-            wad_patch_name = "ootr_jpn.gzi"
-        else:
-            raise Exception('Base WAD file is not a valid OoT USA or JPN wad.')
+    isUsaApp1 = wad_app1_sha1 in wad_app1_sha1_usa
+    isUsaApp5 = wad_app5_sha1 in wad_app5_sha1_usa
+    isJpnApp1 = wad_app1_sha1 in wad_app1_sha1_jpn
+    isJpnApp5 = wad_app5_sha1 in wad_app5_sha1_jpn
+
+    isUsaWad = isUsaApp1 and isUsaApp5
+    isJpnWad = isJpnApp1 and isJpnApp5
+
+    if isUsaWad:
+        wad_patch_name = "ootr_usa.gzi"
+    elif isJpnWad:
+        wad_patch_name = "ootr_jpn.gzi"
     else:
-        raise Exception('Base WAD file is not a valid OoT USA or JPN wad.')
+        raise RuntimeError('Base WAD file is not a valid OoT USA or JPN wad.')
 
     gzinject_path = "./" if is_bundled() else "bin/gzinject/"
     gzinject_patch_path = gzinject_path + wad_patch_name
