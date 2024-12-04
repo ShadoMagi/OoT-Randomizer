@@ -136,7 +136,7 @@ for (name, sym) in symbols.items():
         }
         else:
             patch_symbols[name] = addr
-        
+
 with open('../data/generated/symbols.json', 'w') as f:
     json.dump(data_symbols, f, indent=4, sort_keys=True)
 
