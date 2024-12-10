@@ -44,4 +44,3 @@
     TCG_SHUFFLE_PATCH_7_START:
     or      t9, $zero, $zero
     TCG_SHUFFLE_PATCH_7_END:
-
