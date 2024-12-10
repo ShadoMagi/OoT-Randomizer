@@ -131,9 +131,9 @@ for (name, sym) in symbols.items():
         if PAYLOAD_START <= addr < PAYLOAD_END:
             addr = addr - 0x80400000 + 0x03480000
             data_symbols[name] = {
-            'address': f'{addr:08X}',
-            'length': sym.get('length', 0),
-        }
+                'address': f'{addr:08X}',
+                'length': sym.get('length', 0),
+            }
         else:
             patch_symbols[name] = addr
 
