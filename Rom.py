@@ -427,6 +427,6 @@ class OverlayTable:
     def VRAM_2_VROM(overlay_entries: list[OverlayEntry], vram_address: int) -> int:
         # Loop through overlay table and find the entry containing the address
         for overlay_entry in overlay_entries:
-            if (overlay_entry.vram_start <= vram_address) and (overlay_entry.vram_end > vram_address):
+            if overlay_entry.vram_start <= vram_address and overlay_entry.vram_end > vram_address:
                 return vram_address - overlay_entry.vram_start + overlay_entry.vrom_start
         raise Exception("Overlay address not found in table")
