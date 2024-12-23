@@ -281,6 +281,8 @@ def patch_rom(spoiler: Spoiler, world: World, rom: Rom) -> Rom:
     # Add the extended texture data to the DMA table.
     rom.update_dmadata_record_by_key(None, extended_textures_start, end_address)
 
+    save_context = SaveContext()
+
     # Create an option so that recovery hearts no longer drop by changing the code which checks Link's health when an item is spawned.
     if world.settings.no_collectible_hearts:
         symbol = rom.sym('NO_COLLECTIBLE_HEARTS')
@@ -793,6 +795,8 @@ def patch_rom(spoiler: Spoiler, world: World, rom: Rom) -> Rom:
 
     if world.settings.shuffle_hideout_entrances:
         rom.write_byte(rom.sym('HIDEOUT_SHUFFLED'), 1)
+        if world.settings.shuffle_gerudo_fortress_heart_piece == 'remove':
+            save_context.write_permanent_flag(Scenes.GERUDO_FORTRESS, FlagType.COLLECT, 0x3, 0x02)
 
     if world.shuffle_dungeon_entrances:
         rom.write_byte(rom.sym('DUNGEONS_SHUFFLED'), 1)
@@ -839,8 +843,6 @@ def patch_rom(spoiler: Spoiler, world: World, rom: Rom) -> Rom:
 
     rom.write_bytes(rom.sym('CFG_FILE_SELECT_HASH'), spoiler.file_hash)
     rom.write_bytes(rom.sym('PASSWORD'), spoiler.password)
-
-    save_context = SaveContext()
 
     # Initial Save Data
     if not world.settings.useful_cutscenes and 'Forest Temple' not in world.settings.dungeon_shortcuts:
@@ -1016,18 +1018,6 @@ def patch_rom(spoiler: Spoiler, world: World, rom: Rom) -> Rom:
     elif world.settings.open_kakariko != 'closed':
         rom.write_byte(rom.sym('OPEN_KAKARIKO'), 1)
 
-    # Mark starting trade items as owned
-    # The effective starting item seen in the player inventory will be the
-    # latest shuffled item in the trade sequence, calculated in
-    # Plandomizer.WorldDistribution.configure_effective_starting_items.
-    owned_flags = 0
-    for item_name in world.distribution.starting_items.keys():
-        if item_name in child_trade_items:
-            owned_flags += 0x1 << (child_trade_items.index(item_name))
-        if item_name in trade_items:
-            owned_flags += 0x1 << (trade_items.index(item_name) + 11)
-    save_context.write_permanent_flags(Scenes.DEATH_MOUNTAIN_TRAIL, FlagType.UNK00, owned_flags)
-
     # Mark unreachable trade-ins as traded. Only applicable with trade quest shuffle off,
     # and only practically affects the Blue Potion purchase from Granny's Potion Shop.
     if not world.settings.adult_trade_shuffle and len(world.settings.adult_trade_start) > 0:
@@ -1067,7 +1057,7 @@ def patch_rom(spoiler: Spoiler, world: World, rom: Rom) -> Rom:
         save_context.write_bits(0x0EDD, 0x01) # "Obtained Zelda's Letter"
         save_context.write_bits(0x0EDE, 0x02) # "Learned Zelda's Lullaby"
         save_context.write_bits(0x00D4 + 0x5F * 0x1C + 0x04 + 0x3, 0x10) # "Moved crates to access the courtyard"
-    if world.skip_child_zelda or "Zeldas Letter" in world.distribution.starting_items.keys():
+    if 'Zeldas Letter' in world.distribution.starting_items:
         if world.settings.open_kakariko != 'closed':
             save_context.write_bits(0x0F07, 0x40)  # "Spoke to Gate Guard About Mask Shop"
         if world.settings.complete_mask_quest:
@@ -2011,7 +2001,10 @@ def patch_rom(spoiler: Spoiler, world: World, rom: Rom) -> Rom:
                 if world.entrance_rando_reward_hints:
                     vanilla_reward = world.get_location(dungeon.vanilla_boss_name).vanilla_item
                     vanilla_reward_location = world.hinted_dungeon_reward_locations[vanilla_reward]
-                    area = HintArea.at(vanilla_reward_location)
+                    if vanilla_reward_location is None:
+                        area = HintArea.ROOT
+                    else:
+                        area = HintArea.at(vanilla_reward_location)
                     area = GossipText(area.text(world.settings.clearer_hints, preposition=True, use_2nd_person=True), [area.color], prefix='', capitalize=False)
                     compass_message = f"\x13\x75\x08You found the \x05\x41Compass\x05\x40\x01for {dungeon_name}\x05\x40!\x01The {vanilla_reward} can be found\x01{area}!\x09"
                 else:
@@ -2792,10 +2785,13 @@ def configure_dungeon_info(rom: Rom, world: World) -> None:
     if world.dungeon_rewards_hinted:
         for reward in REWARD_COLORS:
             location = world.hinted_dungeon_reward_locations[reward]
-            area = HintArea.at(location)
+            if location is None:
+                area = HintArea.ROOT
+            else:
+                area = HintArea.at(location)
             dungeon_reward_areas += area.short_name.encode('ascii').ljust(0x16) + b'\0'
-            dungeon_reward_worlds.append(location.world.id + 1)
-            if location.world.id == world.id and area.is_dungeon:
+            dungeon_reward_worlds.append((world.id if location is None else location.world.id) + 1)
+            if location is not None and location.world.id == world.id and area.is_dungeon:
                 dungeon_rewards[codes.index(area.dungeon_name)] = boss_reward_index(location.item)
 
     dungeon_is_mq = [1 if world.dungeon_mq.get(c) else 0 for c in codes]

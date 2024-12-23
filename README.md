@@ -119,6 +119,7 @@ issue. You should always Hard Reset to avoid this issue entirely.
 * New `Require Lens of Truth for Treasure Chest Game` setting.
 * New option `Market Big Poes` for the `Misc. Hints` setting.
 * New setting `Shuffle Ganon's Tower Entrance` to allow shuffling the boss entrance to Ganon himself.
+* New setting to control the behavior of the child-only heart piece in Gerudo Fortress when Thieves' Hideout entrances are shuffled.
 
 #### Bug fixes
 * Ocarina buttons required to play the Song of Time are now part of the `path of time` goal.
@@ -129,6 +130,9 @@ issue. You should always Hard Reset to avoid this issue entirely.
 * Fix importing settings from older versions on web.
 * Fix a Mac-specific issue when loading track .meta files.
 * Fix an error in the easy bite fishing hack.
+* The randomizer no longer ignores errors when decompressing the base rom or compressing the randomized rom.
+* Trade quest items from skipped locations are no longer lost when another trade item is found.
+* Fix a crash when dungeon rewards are directly selected as starting items.
 
 #### New Speedups
 * The first text box from each carpenter in the Thieves' Hideout is skipped.
