@@ -133,6 +133,7 @@ issue. You should always Hard Reset to avoid this issue entirely.
 * The randomizer no longer ignores errors when decompressing the base rom or compressing the randomized rom.
 * Trade quest items from skipped locations are no longer lost when another trade item is found.
 * Fix a crash when dungeon rewards are directly selected as starting items.
+* Fix an error with pre-completed dungeon rewards in multiworld.
 
 #### New Speedups
 * The first text box from each carpenter in the Thieves' Hideout is skipped.
