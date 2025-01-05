@@ -149,6 +149,7 @@ issue. You should always Hard Reset to avoid this issue entirely.
 * Farore's Wind now displays which dungeon it will warp Link to.
 * Reversed the order of the hints in the `Spirit Temple Adult Lower` dual hint.
 * Add adult and child trade items to the auto-tracker context.
+* Improve Debug menu with new options and menus.
 
 ### 8.2
 
