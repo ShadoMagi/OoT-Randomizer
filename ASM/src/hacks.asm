@@ -2600,11 +2600,18 @@ skip_bombchu_bowling_prize_switch:
 ; Trade Quest Shuffle Flag Hooks
 ;==================================================================================================
 ; Control if Fado (blonde Kokiri girl) can spawn in Lost Woods
-.orga 0xE538C4
-    or      t3, $zero, $ra
+.headersize (0x80AD1C20 - 0xE51A60)
+.org 0x80AD3A84    ; Fado branch at end of EnKo_CanSpawn (called by EnKo_Init), override to always true
+    addiu   t5, $zero, 0x0031
+.org 0x80AD3EB0    ; end of EnKo_Init, controls Fado spawn
     jal     check_fado_spawn_flags
-.orga 0xE538D4
-    or      $ra, $zero, t3
+    sw      t8, 0x0180(s0)
+    lw      $ra, 0x001C($sp)
+    lw      s0, 0x0018($sp)
+    jr      $ra
+    addiu   $sp, $sp, 0x0020
+.headersize 0
+
 ; Fix Fado's text id when trading in the odd potion out of order
 .orga 0xE535E4
     sh      t2, 0x010E(s0)

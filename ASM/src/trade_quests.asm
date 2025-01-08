@@ -7,25 +7,24 @@ check_fado_spawn_flags:
     addiu   sp, sp, -0x18
     sw      ra, 0x14(sp)
 
-    ; displaced code
-    lbu     t5, 0x0074(t4)
-    addiu   $at, $zero, 0x0031
-
     ; Spawns if Odd Potion owned but not turned in
     jal     SaveFile_TradeItemIsOwned
     ori     a0, $zero, 0x31
-    beqz    v0, @@return_fado
-    ori     t5, $zero, 0x0000          ; don't spawn
+    beqz    v0, @@kill_fado
+    nop
 
     jal     SaveFile_TradeItemIsTraded
     ori     a0, $zero, 0x31
-    bnez    v0, @@return_fado
-    ori     t5, $zero, 0x0000          ; don't spawn
-    ori     t5, $zero, 0x0031          ; spawn
+    bnez    v0, @@kill_fado
+    nop
+    b       @@return_fado
+    nop
 
+@@kill_fado:      ; you monster D:
+    ; Actor_Kill
+    jal     0x80020EB4
+    or      a0, s0, $zero
 @@return_fado:
-    ; reset v1 in case it was modified
-    or      v1, $zero, $zero
     lw      ra, 0x14(sp)
     jr      ra
     addiu   sp, sp, 0x18
