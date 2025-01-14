@@ -152,6 +152,7 @@ issue. You should always Hard Reset to avoid this issue entirely.
 * Reversed the order of the hints in the `Spirit Temple Adult Lower` dual hint.
 * Add adult and child trade items to the auto-tracker context.
 * Improve Debug menu with new options and menus.
+* New load progress and crash screens for Wii VC.
 
 ### 8.2
 
