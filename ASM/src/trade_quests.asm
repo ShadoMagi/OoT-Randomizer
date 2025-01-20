@@ -7,6 +7,18 @@ check_fado_spawn_flags:
     addiu   sp, sp, -0x18
     sw      ra, 0x14(sp)
 
+    ; Only change behavior for Fado actor
+    ; Vanilla EnKo_CanSpawn behavior checks if
+    ; the scene is Lost Woods and does not
+    ; check the EnKo type. However, since playstate
+    ; address has to be refreshed, use the EnKo type
+    ; instead
+    lh      t0, 0x1C(s0)    ; s0 = EnKo* this pointer, 0x1C = Actor.params
+    andi    t1, t0, 0xFF    ; filter actor params to those used for ENKO_TYPE macro
+    li      $at, 0xC        ; 0xC = ENKO_TYPE_CHILD_FADO
+    bne     t1, $at, @@return_fado
+    nop
+
     ; Spawns if Odd Potion owned but not turned in
     jal     SaveFile_TradeItemIsOwned
     ori     a0, $zero, 0x31

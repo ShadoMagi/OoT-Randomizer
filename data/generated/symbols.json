@@ -208,7 +208,7 @@
         "length": 6
     },
     "CFG_MASK_AUTOEQUIP": {
-        "address": "03486C90",
+        "address": "03486CA4",
         "length": 1
     },
     "CFG_MASK_SHOP_HINT": {
@@ -384,7 +384,7 @@
         "length": 1
     },
     "CURR_ACTOR_SPAWN_INDEX": {
-        "address": "034869EC",
+        "address": "03486A00",
         "length": 2
     },
     "CUSTOM_KEY_MODELS": {
@@ -712,7 +712,7 @@
         "length": 1
     },
     "SHUFFLE_CHEST_GAME": {
-        "address": "03486D30",
+        "address": "03486D44",
         "length": 1
     },
     "SHUFFLE_COWS": {
@@ -776,7 +776,7 @@
         "length": 4
     },
     "TCG_REQUIRES_LENS": {
-        "address": "03486D31",
+        "address": "03486D45",
         "length": 1
     },
     "TIME_STRING_TXT": {
