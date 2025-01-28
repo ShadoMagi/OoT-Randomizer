@@ -684,7 +684,7 @@
         "length": 4
     },
     "REQUIRED_PENDING_FRAMES": {
-        "address": "034A3EC0",
+        "address": "034A3ED0",
         "length": 1
     },
     "REWARDS_AS_ITEMS": {
@@ -1016,19 +1016,19 @@
         "length": 3
     },
     "debug_text_height": {
-        "address": "034A3CC8",
+        "address": "034A3CD8",
         "length": 1
     },
     "debug_text_width": {
-        "address": "034A3CC9",
+        "address": "034A3CD9",
         "length": 1
     },
     "defaultDDHeart": {
-        "address": "034A3F34",
+        "address": "034A3F44",
         "length": 6
     },
     "defaultHeart": {
-        "address": "034A3F3C",
+        "address": "034A3F4C",
         "length": 6
     },
     "deku_rooms": {
@@ -1096,7 +1096,7 @@
         "length": 312
     },
     "freecam_modes": {
-        "address": "034A3D68",
+        "address": "034A3D78",
         "length": 66
     },
     "ganon_rooms": {
@@ -1132,7 +1132,7 @@
         "length": 260
     },
     "icon_sprites": {
-        "address": "034A3E38",
+        "address": "034A3E48",
         "length": 12
     },
     "illegal_model": {
@@ -1144,19 +1144,19 @@
         "length": 2
     },
     "input_icon_height": {
-        "address": "034A3F4E",
+        "address": "034A3F5E",
         "length": 1
     },
     "input_icon_width": {
-        "address": "034A3F4F",
+        "address": "034A3F5F",
         "length": 1
     },
     "input_number_height": {
-        "address": "034A3F4C",
+        "address": "034A3F5C",
         "length": 1
     },
     "input_number_width": {
-        "address": "034A3F4D",
+        "address": "034A3F5D",
         "length": 1
     },
     "item_digit_sprite": {
@@ -1204,7 +1204,7 @@
         "length": 4
     },
     "left_alignment": {
-        "address": "034A3F4A",
+        "address": "034A3F5A",
         "length": 2
     },
     "linkhead_skull_sprite": {
@@ -1300,7 +1300,7 @@
         "length": 256
     },
     "rupee_colors": {
-        "address": "034A3F28",
+        "address": "034A3F38",
         "length": 12
     },
     "rupee_digit_sprite": {
@@ -1372,11 +1372,11 @@
         "length": 4
     },
     "text_height": {
-        "address": "034A4090",
+        "address": "034A40A0",
         "length": 4
     },
     "text_width": {
-        "address": "034A4094",
+        "address": "034A40A4",
         "length": 4
     },
     "texture_table": {
@@ -1384,7 +1384,7 @@
         "length": 496
     },
     "top_alignment": {
-        "address": "034A3F48",
+        "address": "034A3F58",
         "length": 2
     },
     "trade_quest_items": {
