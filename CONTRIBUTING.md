@@ -8,7 +8,6 @@ If you're interested in contributing to randomizer development but you're not su
 * Other good ways to contribute besides writing code are to test and review open pull requests. See the [Labels](#labels) section for details.
 * You're not restricted to open GitHub issues. Feel free to PR any feature you think would be cool, or fix a bug you've run into that may not be extremely common.
 * However, if you're looking for inspiration, we have a [Good First Issue](https://github.com/OoTRandomizer/OoT-Randomizer/issues?q=state%3Aopen%20label%3A%22Status%3A%20Good%20First%20Issue%22) label.
-* **TODO** mentoring?
 * The #dev-resources Discord channel has additional notes.
 * If you're working on an issue and it's taking a while, leave a comment on the issue to avoid duplicate work, or consider opening a draft PR, especially if you're looking for help from other contributors.
 * If you'd like to learn more about how this project is organized, keep reading.
