@@ -237,9 +237,7 @@ uint8_t treasure_chest_game_show_message = 0;
 // Displays a warning message if the player attempted the Treasure Chest Game without
 // Lens of Truth when settings require it.
 void treasure_chest_game_message() {
-    if (z64_file.items[Z64_SLOT_LENS] != Z64_ITEM_LENS) {
-        treasure_chest_game_show_message = 1;
-    }
+    treasure_chest_game_show_message = 1;
 }
 
 // Function to display custom textboxes ingame.
