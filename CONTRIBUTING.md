@@ -70,7 +70,7 @@ If your PR has been open for a while and you would like to update it for latest 
 
 # Release cycle
 
-Regular releases of the randomizer follow this schedule:
+Regular releases of the randomizer roughly follow this schedule:
 
 * 3 months after the previous release was published, the codebase enters _feature freeze_: No new “enhancement” (new feature) pull requests will be merged until after the next release. Sometimes, exceptions are made for features that are particularly relevant for racing. During feature freeze, bug, maintenance, and preset PRs will continue to be merged as per usual (with possible exceptions made for PRs making very large code changes).
 * Feature freeze lasts at least one week. We may also classify some open bugs as release-blocking if they were introduced since the last release and/or are high severity, in which case the codebase remains in feature freeze until they are fixed.
