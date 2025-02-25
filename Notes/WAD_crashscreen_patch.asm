@@ -1674,10 +1674,10 @@ lis r7, 0x80000000 + WVCLoadLogoStrVAarg@h
 
 srwi r5, r6, 20
 addi r4, r5, 1
-mulli r4, r4, 100      #multiply progress by 100 then devide by 32 (MB)
+mulli r4, r4, 100       #multiply progress by 100 then devide by 32 (MB)
 li    r5, 32           
 divwu r4, r4, r5 
-cmpwi r4, 100		   #cap at 100%
+cmpwi r4, 100           #cap at 100%
 ble updateProgress
 li r4, 100
 
