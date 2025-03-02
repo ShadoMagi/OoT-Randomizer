@@ -1051,7 +1051,7 @@
         "user_message": "Multiworld Tournament Season 5",
         "world_count": 3,
         "create_spoiler": true,
-        "password_lock": true,
+        "password_lock": false,
         "randomize_settings": false,
         "logic_rules": "glitchless",
         "reachable_locations": "all",
