@@ -1109,7 +1109,7 @@
         "shuffle_song_items": "song",
         "shopsanity": "4",
         "shopsanity_prices": "random",
-        "tokensanity": "off",
+        "tokensanity": "dungeons",
         "shuffle_scrubs": "low",
         "shuffle_child_trade": [],
         "adult_trade_shuffle": false,
