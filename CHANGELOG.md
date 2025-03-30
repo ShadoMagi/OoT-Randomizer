@@ -48,6 +48,7 @@
 * Improve Debug menu with new options and menus.
 * New load progress and crash screens for Wii VC.
 * `Pre-completed Dungeons Mode` set to `Specific Rewards` is now compatible with shuffled dungeon rewards.
+* The app icon and the logo in the offline generator's title bar have been updated with the new OoTR logo.
 
 # 8.2
 
