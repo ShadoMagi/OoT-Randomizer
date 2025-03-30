@@ -29,6 +29,7 @@
 * Fix `Pre-completed Dungeons Mode` set to `Specific Rewards` not accounting for boss entrance randomizer.
 * Fix the “VC Crash” bug.
 * Fix Spirit Temple music not resuming after Nabooru is defeated.
+* Fix Grog not spawning when Odd Mushroom reverts on savewarp.
 
 ## New Speedups
 * The first text box from each carpenter in the Thieves' Hideout is skipped.
